@@ -1,0 +1,38 @@
+type User {
+    userId: Int
+    username: String
+    email: String
+    connectionStatus: ConnectionStatus
+    profilePicture: String
+    role: Role
+    userStatus: UserStatus
+    providerId: Provider
+}
+
+enum Provider {
+    google
+    keycloak
+}
+
+enum ConnectionStatus {
+    ONLINE
+    OFFLINE
+}
+
+enum UserStatus {
+    ACTIVE
+    INACTIVE
+}
+
+enum Role {
+    ADMIN
+    USER
+}
+
+type Mutation {
+    changeAcStatusById(userId: Int, userStatus: UserStatus): User
+}
+
+type Query {
+    getAllUsers: [User]
+}
